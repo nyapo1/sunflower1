@@ -6,53 +6,7 @@ import gsap from 'gsap';
 
 // ... other imports and code ...
 
-const Card = ({ title, number, description }) => {
-  const cardRef = useRef(null);
-  const pathRef = useRef(null);
 
-  useEffect(() => {
-    // Create the animation
-    gsap.set(pathRef.current, {
-      strokeDasharray: pathRef.current.getTotalLength(),
-      strokeDashoffset: pathRef.current.getTotalLength()
-    });
-
-    gsap.to(pathRef.current, {
-      strokeDashoffset: 0,
-      duration: 2,
-      ease: "power2.inOut"
-    });
-  }, []);
-
-  return (
-    <div className='relative' ref={cardRef}>
-      {/* SVG Border */}
-      <svg 
-        className='absolute inset-0 w-full h-full pointer-events-none'
-        viewBox='0 0 400 300'
-      >
-        <path
-          ref={pathRef}
-          d='M 40 20 L 380 20 L 380 280'
-          fill='none'
-          stroke='white'
-          strokeWidth='2'
-          strokeOpacity='0.2'
-          className='path'
-        />
-      </svg>
-
-      {/* Card Content */}
-      <div className='p-8'>
-        <h2 className='text-2xl font-bold mb-2 text-white'>{title}</h2>
-        <span className='text-gray-300 text-sm mb-4 block'>{number}</span>
-        <p className='text-white/80'>
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-};
 
 
 
@@ -69,6 +23,53 @@ const Nav = () => {
   };
 
   const navItems = ['Home', 'How to use', 'About', 'Advantages'];
+
+
+  useEffect(()=>{
+    const tl = gsap.timeline({
+      defaults: { ease: "power3.out", duration:2}
+    });
+
+      tl.to('.flower-1',{
+        y:-50,
+        opacity:1
+      })
+      .to('.flower-2',{
+        y:-50,
+        opacity:1
+      }, '-=1')
+    const tl2 = gsap.timeline({
+      defaults: { ease: "power3.out", duration:2}
+    });
+
+      tl2.to('.flower-3',{
+        y:-50,
+        opacity:1
+      })
+      .to('.flower-4',{
+        y:-50,
+        opacity:1
+      }, '-=1')
+
+      const ct=gsap.timeline({defaults:{ease:'power1.inOut',duration:2}})
+
+      ct.to('.card',{
+        y:0,
+      })
+      .to('.card-title',{
+        opacity:1
+      },
+    '-=1.8')
+      .to('.card-position',{
+        opacity:1
+      },
+    '-=1.8')
+      .to('.card-description',{
+        opacity:1
+      },
+    '-=1.8')
+     
+  })
 
   return (
     <div className='relative  sm:h-[200vh] w-[100vw] md:h-[120vh] p-0 m-0 bg-gradient-to-tr from-gray-300 via-purple-300 to-purple-500'>
@@ -125,13 +126,13 @@ const Nav = () => {
 
           <div className='md:flex justify-between'>
             <div className='mt-10'>
-              <h2 className='text-4xl font-bold text-white'>Flower Power Frames </h2>
-              <h2 className='text-4xl font-bold mt-2 text-white'>Sunflower Photography that Pops</h2>
+              <h2 className='text-4xl font-bold text-purple-800 flower-1 translate-y-6 opacity-0'>Flower Power Frames </h2>
+              <h2 className='text-2xl font-bold mt-2 text-purple-800  flower-2 translate-y-6 opacity-0'>Sunflower Photography that Pops</h2>
             </div>
 
             <div className='mt-10'>
-              <h2 className='text-4xl font-bold text-white'>Organic Sunflower Fields</h2>
-              <h2 className='text-4xl font-bold text-white mt-3'>Are readily available</h2>
+              <h2 className='text-4xl font-bold   flower-3 text-purple-800 translate-y-6 opacity-0'>Organic Sunflower Fields</h2>
+              <h2 className='text-2xl font-bold  mt-3  flower-4 text-purple-800 translate-y-6 opacity-0'>Are readily available</h2>
             </div>
           
           </div>
@@ -139,32 +140,32 @@ const Nav = () => {
           <div>
           <div className='container mx-auto px-4 mt-20'>
             {/* Grid Container */}
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 '>
               {/* About Card */}
-              <div className='bg-white/10  p-8  border-t-2 border-r-2 rounded-tr-4xl  border-white'>
-                <h2 className='text-2xl font-bold mb-2 text-white'>About</h2>
-                <span className='text-gray-300 text-sm mb-4 block'>.01</span>
-                <p className='text-white/80'>
+              <div className='bg-white/5 p-8 card -translate-y-6 border-t-2 border-r-2 rounded-tr-4xl  border-white'>
+                <h2 className='text-2xl font-bold mb-2  text-purple-500 opacity-0 card-title'>About</h2>
+                <span className='text-purple-400 text-sm mb-4 block card-position opacity-0'>.01</span>
+                <p className='text-purple-900 card-description opacity-0'>
                   GreenFarm is a digital form of sustainable agriculture, regulated 
                   and monitored through smart technology.
                 </p>
               </div>
 
               {/* Storing Card */}
-              <div className='bg-white/10  p-8  border-t-2 border-r-2 rounded-tr-4xl border-white'>
-                <h2 className='text-2xl font-bold mb-2 text-white'>Storing</h2>
-                <span className='text-gray-300 text-sm mb-4 block'>.02</span>
-                <p className='text-white/80'>
+              <div className='bg-white/10 -translate-y-6 p-8 card border-t-2 border-r-2 rounded-tr-4xl border-white'>
+                <h2 className='text-2xl font-bold mb-2 text-purple-500 opacity-0 card-title'>Storing</h2>
+                <span className='text-purple-400 text-sm mb-4 block card-position opacity-0'>.02</span>
+                <p className='text-purple-900 card-description opacity-0'>
                   Data can be stored in digital format and accessed 
                   using mobile phones or other electronic devices.
                 </p>
               </div>
 
               {/* Functions Card */}
-              <div className='bg-white/10  p-8  border-t-2 border-r-2 rounded-tr-4xl border-white'>
-                <h2 className='text-2xl font-bold mb-2 text-white'>Functions</h2>
-                <span className='text-gray-300 text-sm mb-4 block'>.03</span>
-                <p className='text-white/80'>
+              <div className='bg-white/10  p-8 card -translate-y-6 border-t-2 border-r-2 rounded-tr-4xl border-white'>
+                <h2 className='text-2xl font-bold mb-2 text-purple-500 opacity-0 card-title'>Functions</h2>
+                <span className='text-purple-400 text-sm mb-4 block card-position opacity-0'>.03</span>
+                <p className='text-purple-900 card-description opacity-0'>
                   Functions like traditional farming but in digital form, enabling 
                   smart monitoring, automation, and resource management.
                 </p>

@@ -1,3 +1,26 @@
 .path {
   filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.4));
 }
+
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.text-4xl {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
