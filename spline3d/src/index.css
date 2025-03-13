@@ -1,20 +1,4 @@
 @import "tailwindcss";
 
-.path {
-  filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.4));
-}
 
-.hover-lift {
-  transition: transform 0.3s ease;
-}
 
-.hover-lift:hover {
-  transform: translateY(-5px);
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-}
-
-/* Add smooth transition for better performance */
-.text-4xl {
-  will-change: transform;
-  transform: translateZ(0);
-}

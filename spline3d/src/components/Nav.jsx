@@ -72,7 +72,7 @@ const Nav = () => {
   })
 
   return (
-    <div className='relative  sm:h-[200vh] w-[100vw] md:h-[120vh] p-0 m-0 bg-gradient-to-tr from-gray-300 via-purple-300 to-purple-500'>
+    <div className='relative  sm:h-[200vh] w-[100vw] md:h-[120vh] p-0 m-0 bg-gradient-to-tr from-gray-300 via-purple-300 to-purple-500 '>
       {/* Background 3D container */}
       <div className='absolute inset-0 z-0 flex justify-center items-center'>
         <Spline />
